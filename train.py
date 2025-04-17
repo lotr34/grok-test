@@ -1,32 +1,35 @@
-import json
-from datasets import load_dataset
+from datasets import Dataset
 from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments, Trainer
 from peft import LoraConfig, get_peft_model
+from pathlib import Path
 import torch
+import json
 
-# Model ve tokenizer'ı yükle
+# Model adı
 model_name = "mistralai/Mistral-7B-Instruct-v0.2"
+
+# Tokenizer ve Modeli yükle
 try:
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    # Pad token'ı ayarla
-    tokenizer.pad_token = tokenizer.eos_token
+    # Force download, en son sürümü almak için
+    tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=False, force_download=True)
+    tokenizer.pad_token = tokenizer.eos_token  # Pad token'ı EOS olarak ayarla
+
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
-        torch_dtype=torch.float16,
-        device_map="auto",
-        low_cpu_mem_usage=True
+        device_map="cpu",  # GPU'yu otomatik seç
+        force_download=True
     )
-    # Modelin pad_token_id'sini güncelle
-    model.config.pad_token_id = tokenizer.pad_token_id
+
+    model.config.pad_token_id = tokenizer.pad_token_id  # Pad token'ı modelin config'ine ayarla
 except Exception as e:
     print(f"Model yüklenirken hata oluştu: {e}")
     exit()
 
 # LoRA yapılandırması
 lora_config = LoraConfig(
-    r=8,  # LoRA rank
+    r=8,
     lora_alpha=16,
-    target_modules=["q_proj", "v_proj"],  # Mistral için hedef modüller
+    target_modules=["q_proj", "v_proj"],
     lora_dropout=0.05,
     bias="none",
     task_type="CAUSAL_LM"
@@ -35,16 +38,21 @@ model = get_peft_model(model, lora_config)
 
 # Veri setini yükle
 try:
-    dataset = load_dataset("json", data_files="dataset.jsonl", split="train")
+    with open("dataset.jsonl", "r", encoding="utf-8") as f:
+        lines = [json.loads(line) for line in f]
+
+    dataset = Dataset.from_list(lines)
 except Exception as e:
     print(f"Veri seti yüklenirken hata oluştu: {e}")
     exit()
 
 # Tokenizasyon fonksiyonu
 def tokenize_function(examples):
-    inputs = [msg[0]["content"] for msg in examples["messages"]]
-    outputs = [msg[1]["content"] for msg in examples["messages"]]
     try:
+        inputs = [msg[0]["content"] for msg in examples["messages"]]
+        outputs = [msg[1]["content"] for msg in examples["messages"]]
+
+        # Tokenizer ile inputları ve outputları tokenleştir
         model_inputs = tokenizer(
             [f"Kullanıcı girdisi: {inp}\nGörev: Kullanıcının ilgi alanlarına uygun bir kutu oyunu öner." for inp in inputs],
             max_length=512,
@@ -57,11 +65,13 @@ def tokenize_function(examples):
             truncation=True,
             padding="max_length"
         )["input_ids"]
+
         return model_inputs
     except Exception as e:
         print(f"Tokenizasyon sırasında hata oluştu: {e}")
         return None
 
+# Veri setini tokenleştir
 try:
     tokenized_dataset = dataset.map(tokenize_function, batched=True, remove_columns=dataset.column_names)
 except Exception as e:
@@ -71,15 +81,14 @@ except Exception as e:
 # Eğitim ayarları
 training_args = TrainingArguments(
     output_dir="./mistral-finetuned",
-    per_device_train_batch_size=1,  # Bellek dostu
-    gradient_accumulation_steps=4,  # Daha büyük etkili batch boyutu
+    per_device_train_batch_size=1,
+    gradient_accumulation_steps=4,
     num_train_epochs=3,
     learning_rate=2e-4,
     save_strategy="epoch",
     logging_steps=100,
-    fp16=True,  # Karışık hassasiyet
-    remove_unused_columns=False,
-    #evaluation_strategy="no"  # Değerlendirme seti yoksa
+    fp16=False,
+    remove_unused_columns=False
 )
 
 # Trainer oluştur

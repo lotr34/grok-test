@@ -1,0 +1,1018 @@
+{
+    "game": {
+      "name": "Monopoly",
+      "version": "Classic",
+      "description": "A strategic board game where players buy, trade, and develop properties to accumulate wealth and bankrupt opponents through economic competition.",
+      "genre": ["Economic", "Strategy", "Negotiation"],
+      "settings": {
+        "maxPlayers": 8,
+        "minPlayers": 2,
+        "currency": "Monopoly Money (M$)",
+        "startingMoney": 1500,
+        "estimatedPlayTime": "60-180 minutes",
+        "gameBoard": {
+          "size": 40,
+          "layout": "square",
+          "direction": "clockwise"
+        }
+      },
+      "components": {
+        "board": {
+          "spaces": [
+            {
+              "id": 0,
+              "name": "GO",
+              "type": "special",
+              "action": {
+                "description": "Collect M$200 when passing or landing",
+                "collect": 200
+              }
+            },
+            {
+              "id": 1,
+              "name": "Mediterranean Avenue",
+              "type": "property",
+              "group": "Brown",
+              "price": 60,
+              "rent": [2, 10, 30, 90, 160, 250],
+              "houseCost": 50,
+              "hotelCost": 50,
+              "mortgage": 30
+            },
+            {
+              "id": 2,
+              "name": "Community Chest",
+              "type": "card",
+              "action": {
+                "description": "Draw a Community Chest card",
+                "cardType": "community_chest"
+              }
+            },
+            {
+              "id": 3,
+              "name": "Baltic Avenue",
+              "type": "property",
+              "group": "Brown",
+              "price": 60,
+              "rent": [4, 20, 60, 180, 320, 450],
+              "houseCost": 50,
+              "hotelCost": 50,
+              "mortgage": 30
+            },
+            {
+              "id": 4,
+              "name": "Income Tax",
+              "type": "tax",
+              "action": {
+                "description": "Pay M$200 or 10% of total worth",
+                "taxOptions": [
+                  { "type": "fixed", "amount": 200 },
+                  { "type": "percentage", "rate": 10 }
+                ]
+              }
+            },
+            {
+              "id": 5,
+              "name": "Reading Railroad",
+              "type": "railroad",
+              "price": 200,
+              "rent": [25, 50, 100, 200],
+              "mortgage": 100
+            },
+            {
+              "id": 6,
+              "name": "Oriental Avenue",
+              "type": "property",
+              "group": "Light Blue",
+              "price": 100,
+              "rent": [6, 30, 90, 270, 400, 550],
+              "houseCost": 50,
+              "hotelCost": 50,
+              "mortgage": 50
+            },
+            {
+              "id": 7,
+              "name": "Chance",
+              "type": "card",
+              "action": {
+                "description": "Draw a Chance card",
+                "cardType": "chance"
+              }
+            },
+            {
+              "id": 8,
+              "name": "Vermont Avenue",
+              "type": "property",
+              "group": "Light Blue",
+              "price": 100,
+              "rent": [6, 30, 90, 270, 400, 550],
+              "houseCost": 50,
+              "hotelCost": 50,
+              "mortgage": 50
+            },
+            {
+              "id": 9,
+              "name": "Connecticut Avenue",
+              "type": "property",
+              "group": "Light Blue",
+              "price": 120,
+              "rent": [8, 40, 100, 300, 450, 600],
+              "houseCost": 50,
+              "hotelCost": 50,
+              "mortgage": 60
+            },
+            {
+              "id": 10,
+              "name": "Jail",
+              "type": "special",
+              "action": {
+                "description": "Visiting or sent to Jail",
+                "jailRules": {
+                  "stayLimit": 3,
+                  "payToLeave": 50,
+                  "useCard": true
+                }
+              }
+            },
+            {
+              "id": 11,
+              "name": "St. Charles Place",
+              "type": "property",
+              "group": "Pink",
+              "price": 140,
+              "rent": [10, 50, 150, 450, 625, 750],
+              "houseCost": 100,
+              "hotelCost": 100,
+              "mortgage": 70
+            },
+            {
+              "id": 12,
+              "name": "Electric Company",
+              "type": "utility",
+              "price": 150,
+              "rent": {
+                "oneUtility": "4x dice roll",
+                "twoUtilities": "10x dice roll"
+              },
+              "mortgage": 75
+            },
+            {
+              "id": 13,
+              "name": "States Avenue",
+              "type": "property",
+              "group": "Pink",
+              "price": 140,
+              "rent": [10, 50, 150, 450, 625, 750],
+              "houseCost": 100,
+              "hotelCost": 100,
+              "mortgage": 70
+            },
+            {
+              "id": 14,
+              "name": "Virginia Avenue",
+              "type": "property",
+              "group": "Pink",
+              "price": 160,
+              "rent": [12, 60, 180, 500, 700, 900],
+              "houseCost": 100,
+              "hotelCost": 100,
+              "mortgage": 80
+            },
+            {
+              "id": 15,
+              "name": "Pennsylvania Railroad",
+              "type": "railroad",
+              "price": 200,
+              "rent": [25, 50, 100, 200],
+              "mortgage": 100
+            },
+            {
+              "id": 16,
+              "name": "St. James Place",
+              "type": "property",
+              "group": "Orange",
+              "price": 180,
+              "rent": [14, 70, 200, 550, 750, 950],
+              "houseCost": 100,
+              "hotelCost": 100,
+              "mortgage": 90
+            },
+            {
+              "id": 17,
+              "name": "Community Chest",
+              "type": "card",
+              "action": {
+                "description": "Draw a Community Chest card",
+                "cardType": "community_chest"
+              }
+            },
+            {
+              "id": 18,
+              "name": "Tennessee Avenue",
+              "type": "property",
+              "group": "Orange",
+              "price": 180,
+              "rent": [14, 70, 200, 550, 750, 950],
+              "houseCost": 100,
+              "hotelCost": 100,
+              "mortgage": 90
+            },
+            {
+              "id": 19,
+              "name": "New York Avenue",
+              "type": "property",
+              "group": "Orange",
+              "price": 200,
+              "rent": [16, 80, 220, 600, 800, 1000],
+              "houseCost": 100,
+              "hotelCost": 100,
+              "mortgage": 100
+            },
+            {
+              "id": 20,
+              "name": "Free Parking",
+              "type": "special",
+              "action": {
+                "description": "No action, safe space",
+                "collect": 0
+              }
+            },
+            {
+              "id": 21,
+              "name": "Kentucky Avenue",
+              "type": "property",
+              "group": "Red",
+              "price": 220,
+              "rent": [18, 90, 250, 700, 875, 1050],
+              "houseCost": 150,
+              "hotelCost": 150,
+              "mortgage": 110
+            },
+            {
+              "id": 22,
+              "name": "Chance",
+              "type": "card",
+              "action": {
+                "description": "Draw a Chance card",
+                "cardType": "chance"
+              }
+            },
+            {
+              "id": 23,
+              "name": "Indiana Avenue",
+              "type": "property",
+              "group": "Red",
+              "price": 220,
+              "rent": [18, 90, 250, 700, 875, 1050],
+              "houseCost": 150,
+              "hotelCost": 150,
+              "mortgage": 110
+            },
+            {
+              "id": 24,
+              "name": "Illinois Avenue",
+              "type": "property",
+              "group": "Red",
+              "price": 240,
+              "rent": [20, 100, 300, 750, 925, 1100],
+              "houseCost": 150,
+              "hotelCost": 150,
+              "mortgage": 120
+            },
+            {
+              "id": 25,
+              "name": "B&O Railroad",
+              "type": "railroad",
+              "price": 200,
+              "rent": [25, 50, 100, 200],
+              "mortgage": 100
+            },
+            {
+              "id": 26,
+              "name": "Atlantic Avenue",
+              "type": "property",
+              "group": "Yellow",
+              "price": 260,
+              "rent": [22, 110, 330, 800, 975, 1150],
+              "houseCost": 150,
+              "hotelCost": 150,
+              "mortgage": 130
+            },
+            {
+              "id": 27,
+              "name": "Ventnor Avenue",
+              "type": "property",
+              "group": "Yellow",
+              "price": 260,
+              "rent": [22, 110, 330, 800, 975, 1150],
+              "houseCost": 150,
+              "hotelCost": 150,
+              "mortgage": 130
+            },
+            {
+              "id": 28,
+              "name": "Water Works",
+              "type": "utility",
+              "price": 150,
+              "rent": {
+                "oneUtility": "4x dice roll",
+                "twoUtilities": "10x dice roll"
+              },
+              "mortgage": 75
+            },
+            {
+              "id": 29,
+              "name": "Marvin Gardens",
+              "type": "property",
+              "group": "Yellow",
+              "price": 280,
+              "rent": [24, 120, 360, 850, 1025, 1200],
+              "houseCost": 150,
+              "hotelCost": 150,
+              "mortgage": 140
+            },
+            {
+              "id": 30,
+              "name": "Go To Jail",
+              "type": "special",
+              "action": {
+                "description": "Go directly to Jail",
+                "moveTo": 10,
+                "collectGo": false
+              }
+            },
+            {
+              "id": 31,
+              "name": "Pacific Avenue",
+              "type": "property",
+              "group": "Green",
+              "price": 300,
+              "rent": [26, 130, 390, 900, 1100, 1275],
+              "houseCost": 200,
+              "hotelCost": 200,
+              "mortgage": 150
+            },
+            {
+              "id": 32,
+              "name": "North Carolina Avenue",
+              "type": "property",
+              "group": "Green",
+              "price": 300,
+              "rent": [26, 130, 390, 900, 1100, 1275],
+              "houseCost": 200,
+              "hotelCost": 200,
+              "mortgage": 150
+            },
+            {
+              "id": 33,
+              "name": "Community Chest",
+              "type": "card",
+              "action": {
+                "description": "Draw a Community Chest card",
+                "cardType": "community_chest"
+              }
+            },
+            {
+              "id": 34,
+              "name": "Pennsylvania Avenue",
+              "type": "property",
+              "group": "Green",
+              "price": 320,
+              "rent": [28, 150, 450, 1000, 1200, 1400],
+              "houseCost": 200,
+              "hotelCost": 200,
+              "mortgage": 160
+            },
+            {
+              "id": 35,
+              "name": "Short Line",
+              "type": "railroad",
+              "price": 200,
+              "rent": [25, 50, 100, 200],
+              "mortgage": 100
+            },
+            {
+              "id": 36,
+              "name": "Chance",
+              "type": "card",
+              "action": {
+                "description": "Draw a Chance card",
+                "cardType": "chance"
+              }
+            },
+            {
+              "id": 37,
+              "name": "Park Place",
+              "type": "property",
+              "group": "Dark Blue",
+              "price": 350,
+              "rent": [35, 175, 500, 1100, 1300, 1500],
+              "houseCost": 200,
+              "hotelCost": 200,
+              "mortgage": 175
+            },
+            {
+              "id": 38,
+              "name": "Luxury Tax",
+              "type": "tax",
+              "action": {
+                "description": "Pay M$100",
+                "tax": 100
+              }
+            },
+            {
+              "id": 39,
+              "name": "Boardwalk",
+              "type": "property",
+              "group": "Dark Blue",
+              "price": 400,
+              "rent": [50, 200, 600, 1400, 1700, 2000],
+              "houseCost": 200,
+              "hotelCost": 200,
+              "mortgage": 200
+            }
+          ]
+        },
+        "cards": {
+          "chance": [
+            {
+              "id": "chance_1",
+              "description": "Advance to Go (Collect M$200)",
+              "action": {
+                "moveTo": 0,
+                "collect": 200
+              }
+            },
+            {
+              "id": "chance_2",
+              "description": "Advance to Illinois Ave.",
+              "action": {
+                "moveTo": 24
+              }
+            },
+            {
+              "id": "chance_3",
+              "description": "Advance to St. Charles Place",
+              "action": {
+                "moveTo": 11
+              }
+            },
+            {
+              "id": "chance_4",
+              "description": "Advance to nearest Utility",
+              "action": {
+                "moveToNearest": ["utility"]
+              }
+            },
+            {
+              "id": "chance_5",
+              "description": "Advance to nearest Railroad",
+              "action": {
+                "moveToNearest": ["railroad"]
+              }
+            },
+            {
+              "id": "chance_6",
+              "description": "Bank pays you dividend of M$50",
+              "action": {
+                "collect": 50
+              }
+            },
+            {
+              "id": "chance_7",
+              "description": "Get Out of Jail Free",
+              "action": {
+                "getOutOfJail": true
+              }
+            },
+            {
+              "id": "chance_8",
+              "description": "Go Back 3 Spaces",
+              "action": {
+                "moveRelative": -3
+              }
+            },
+            {
+              "id": "chance_9",
+              "description": "Go to Jail",
+              "action": {
+                "moveTo": 10,
+                "collectGo": false
+              }
+            },
+            {
+              "id": "chance_10",
+              "description": "Make general repairs on all your property: M$25 per house, M$100 per hotel",
+              "action": {
+                "payPerHouse": 25,
+                "payPerHotel": 100
+              }
+            },
+            {
+              "id": "chance_11",
+              "description": "Pay poor tax of M$15",
+              "action": {
+                "pay": 15
+              }
+            },
+            {
+              "id": "chance_12",
+              "description": "Take a trip to Reading Railroad",
+              "action": {
+                "moveTo": 5
+              }
+            },
+            {
+              "id": "chance_13",
+              "description": "Advance to Boardwalk",
+              "action": {
+                "moveTo": 39
+              }
+            },
+            {
+              "id": "chance_14",
+              "description": "You have been elected Chairman of the Board. Pay each player M$50",
+              "action": {
+                "payPerPlayer": 50
+              }
+            },
+            {
+              "id": "chance_15",
+              "description": "Your building loan matures. Collect M$150",
+              "action": {
+                "collect": 150
+              }
+            }
+          ],
+          "community_chest": [
+            {
+              "id": "cc_1",
+              "description": "Advance to Go (Collect M$200)",
+              "action": {
+                "moveTo": 0,
+                "collect": 200
+              }
+            },
+            {
+              "id": "cc_2",
+              "description": "Bank error in your favor. Collect M$200",
+              "action": {
+                "collect": 200
+              }
+            },
+            {
+              "id": "cc_3",
+              "description": "Doctor's fees. Pay M$50",
+              "action": {
+                "pay": 50
+              }
+            },
+            {
+              "id": "cc_4",
+              "description": "From sale of stock you get M$50",
+              "action": {
+                "collect": 50
+              }
+            },
+            {
+              "id": "cc_5",
+              "description": "Get Out of Jail Free",
+              "action": {
+                "getOutOfJail": true
+              }
+            },
+            {
+              "id": "cc_6",
+              "description": "Go to Jail",
+              "action": {
+                "moveTo": 10,
+                "collectGo": false
+              }
+            },
+            {
+              "id": "cc_7",
+              "description": "Grand Opera Night. Collect M$50 from every player",
+              "action": {
+                "collectPerPlayer": 50
+              }
+            },
+            {
+              "id": "cc_8",
+              "description": "Holiday Fund matures. Receive M$100",
+              "action": {
+                "collect": 100
+              }
+            },
+            {
+              "id": "cc_9",
+              "description": "Income tax refund. Collect M$20",
+              "action": {
+                "collect": 20
+              }
+            },
+            {
+              "id": "cc_10",
+              "description": "It is your birthday. Collect M$10 from each player",
+              "action": {
+                "collectPerPlayer": 10
+              }
+            },
+            {
+              "id": "cc_11",
+              "description": "Life insurance matures. Collect M$100",
+              "action": {
+                "collect": 100
+              }
+            },
+            {
+              "id": "cc_12",
+              "description": "Pay hospital fees of M$100",
+              "action": {
+                "pay": 100
+              }
+            },
+            {
+              "id": "cc_13",
+              "description": "Pay school fees of M$50",
+              "action": {
+                "pay": 50
+              }
+            },
+            {
+              "id": "cc_14",
+              "description": "Receive M$25 consultancy fee",
+              "action": {
+                "collect": 25
+              }
+            },
+            {
+              "id": "cc_15",
+              "description": "You have won second prize in a beauty contest. Collect M$10",
+              "action": {
+                "collect": 10
+              }
+            },
+            {
+              "id": "cc_16",
+              "description": "You inherit M$100",
+              "action": {
+                "collect": 100
+              }
+            }
+          ]
+        },
+        "tokens": [
+          "Car",
+          "Top Hat",
+          "Battleship",
+          "Shoe",
+          "Thimble",
+          "Iron",
+          "Dog",
+          "Wheelbarrow"
+        ],
+        "dice": [
+          {
+            "count": 2,
+            "sides": 6
+          }
+        ],
+        "houses": {
+          "total": 32,
+          "cost": {
+            "Brown": 50,
+            "Light Blue": 50,
+            "Pink": 100,
+            "Orange": 100,
+            "Red": 150,
+            "Yellow": 150,
+            "Green": 200,
+            "Dark Blue": 200
+          }
+        },
+        "hotels": {
+          "total": 12,
+          "cost": {
+            "Brown": 50,
+            "Light Blue": 50,
+            "Pink": 100,
+            "Orange": 100,
+            "Red": 150,
+            "Yellow": 150,
+            "Green": 200,
+            "Dark Blue": 200
+          }
+        },
+        "money": {
+          "denominations": [
+            { "value": 1, "count": 20 },
+            { "value": 5, "count": 30 },
+            { "value": 10, "count": 30 },
+            { "value": 20, "count": 30 },
+            { "value": 50, "count": 20 },
+            { "value": 100, "count": 30 },
+            { "value": 500, "count": 20 }
+          ]
+        }
+      },
+      "gameplayMechanics": {
+        "coreMechanics": [
+          {
+            "name": "Turn-Based Movement",
+            "description": "Players roll two six-sided dice to move their token clockwise around the board. The total determines the number of spaces moved.",
+            "type": "movement",
+            "details": {
+              "diceCount": 2,
+              "diceSides": 6,
+              "doublesRule": {
+                "extraTurn": true,
+                "maxDoubles": 3,
+                "jailOnThird": true
+              }
+            }
+          },
+          {
+            "name": "Property Acquisition",
+            "description": "Players can purchase unowned properties they land on. If they decline, the property is auctioned to the highest bidder.",
+            "type": "resource_management",
+            "details": {
+              "purchase": {
+                "allowed": true,
+                "cost": "property_price"
+              },
+              "auction": {
+                "trigger": "decline_purchase",
+                "startingBid": 10,
+                "bidIncrement": 1
+              }
+            }
+          },
+          {
+            "name": "Rent Payment",
+            "description": "When landing on an owned property, players pay rent to the owner based on the property's development level and ownership status.",
+            "type": "economic",
+            "details": {
+              "rentTiers": {
+                "base": "rent[0]",
+                "withHouses": "rent[1-4]",
+                "withHotel": "rent[5]",
+                "monopolyBonus": "double_rent_if_full_group_owned"
+              },
+              "railroadRent": {
+                "ownedCount": [1, 2, 3, 4],
+                "rentValues": [25, 50, 100, 200]
+              },
+              "utilityRent": {
+                "oneUtility": "4x_dice_roll",
+                "twoUtilities": "10x_dice_roll"
+              }
+            }
+          },
+          {
+            "name": "Property Development",
+            "description": "Players can build houses and hotels on properties they own a full color group of, increasing rent values.",
+            "type": "resource_management",
+            "details": {
+              "requirements": {
+                "fullGroupOwnership": true,
+                "evenBuildRule": true
+              },
+              "limits": {
+                "housesPerProperty": 4,
+                "hotelsPerProperty": 1,
+                "totalHouses": 32,
+                "totalHotels": 12
+              },
+              "costs": {
+                "house": "group_specific",
+                "hotel": "group_specific"
+              }
+            }
+          },
+          {
+            "name": "Trading",
+            "description": "Players can trade properties, money, and Get Out of Jail Free cards to form strategic alliances or complete monopolies.",
+            "type": "negotiation",
+            "details": {
+              "allowedItems": ["properties", "money", "getOutOfJailCards"],
+              "restrictions": {
+                "noBuildingsOnTradedProperties": true,
+                "mutualAgreement": true
+              }
+            }
+          },
+          {
+            "name": "Mortgaging",
+            "description": "Players can mortgage properties to raise funds, receiving half the property's value but forgoing rent until unmortgaged.",
+            "type": "economic",
+            "details": {
+              "mortgageValue": "property_mortgage",
+              "unmortgageCost": "mortgage_value + 10% interest",
+              "restrictions": {
+                "noBuildings": true
+              }
+            }
+          },
+          {
+            "name": "Jail System",
+            "description": "Players sent to Jail must either pay a fine, use a card, or attempt to roll doubles to get out within three turns.",
+            "type": "penalty",
+            "details": {
+              "entry": {
+                "triggers": ["land_on_go_to_jail", "chance_card", "community_chest_card", "three_doubles"],
+                "position": 10
+              },
+              "exit": {
+                "payFine": 50,
+                "useCard": "getOutOfJail",
+                "rollDoubles": {
+                  "attempts": 3,
+                  "onFail": "pay_fine"
+                }
+              }
+            }
+          },
+          {
+            "name": "Bankruptcy",
+            "description": "Players who cannot pay debts declare bankruptcy, transferring assets to the creditor or bank, and are eliminated.",
+            "type": "elimination",
+            "details": {
+              "triggers": ["insufficient_funds"],
+              "toPlayer": {
+                "transfer": ["properties", "money", "getOutOfJailCards"]
+              },
+              "toBank": {
+                "properties": "return_to_bank",
+                "mortgagedProperties": "remain_mortgaged"
+              }
+            }
+          },
+          {
+            "name": "Chance and Community Chest Cards",
+            "description": "Players draw cards that provide rewards, penalties, or movement instructions, adding randomness to the game.",
+            "type": "luck",
+            "details": {
+              "cardTypes": ["chance", "community_chest"],
+              "actions": [
+                "collect_money",
+                "pay_money",
+                "move_to_space",
+                "move_to_nearest",
+                "pay_per_building",
+                "collect_from_players",
+                "pay_to_players",
+                "get_out_of_jail"
+              ]
+            }
+          }
+        ],
+        "playerInteractions": {
+          "competitive": {
+            "description": "Players compete to bankrupt others by charging high rents and acquiring monopolies.",
+            "mechanisms": ["rent_payment", "property_development", "bankruptcy"]
+          },
+          "cooperative": {
+            "description": "Players may negotiate trades to mutual benefit, such as completing color groups.",
+            "mechanisms": ["trading"]
+          },
+          "strategic": {
+            "description": "Players make decisions on property purchases, development, and trading to maximize wealth.",
+            "mechanisms": ["property_acquisition", "property_development", "trading", "mortgaging"]
+          }
+        },
+        "strategicElements": [
+          {
+            "name": "Monopoly Building",
+            "description": "Acquiring all properties in a color group to build houses and hotels, significantly increasing rent.",
+            "impact": "High rent potential, faster opponent bankruptcy"
+          },
+          {
+            "name": "Railroad and Utility Control",
+            "description": "Owning multiple railroads or both utilities for consistent income with low investment.",
+            "impact": "Stable income, less reliant on development"
+          },
+          {
+            "name": "Cash Flow Management",
+            "description": "Balancing property purchases, development, and maintaining liquidity to avoid bankruptcy.",
+            "impact": "Survivability during high rent payments or unexpected costs"
+          },
+          {
+            "name": "Negotiation",
+            "description": "Trading properties or cards to gain strategic advantages, often requiring persuasive skills.",
+            "impact": "Accelerates monopoly formation, alters game dynamics"
+          }
+        ],
+        "randomnessFactors": [
+          {
+            "name": "Dice Rolls",
+            "description": "Movement and utility rent depend on random dice rolls.",
+            "impact": "Affects property landing and rent costs"
+          },
+          {
+            "name": "Card Draws",
+            "description": "Chance and Community Chest cards introduce unpredictable rewards or penalties.",
+            "impact": "Can significantly alter player wealth or position"
+          }
+        ],
+        "progression": {
+          "earlyGame": {
+            "focus": "Property acquisition and initial trades",
+            "typicalActions": ["buy_properties", "trade_for_groups", "avoid_overdevelopment"]
+          },
+          "midGame": {
+            "focus": "Monopoly formation and house building",
+            "typicalActions": ["develop_properties", "trade_strategically", "mortgage_low_value_properties"]
+          },
+          "lateGame": {
+            "focus": "Hotel development and opponent bankruptcy",
+            "typicalActions": ["build_hotels", "maximize_rent", "force_bankruptcy"]
+          }
+        }
+      },
+      "rules": {
+        "turn": {
+          "rollDice": true,
+          "maxDoubles": 3,
+          "doublesToJail": true,
+          "actions": [
+            "roll_dice",
+            "move",
+            "resolve_space",
+            "buy_or_auction",
+            "pay_rent",
+            "build",
+            "trade",
+            "mortgage",
+            "unmortgage"
+          ]
+        },
+        "trading": {
+          "allowed": true,
+          "properties": true,
+          "money": true,
+          "getOutOfJailCards": true,
+          "restrictions": {
+            "noBuildingsOnTradedProperties": true
+          }
+        },
+        "building": {
+          "maxHousesPerProperty": 4,
+          "hotelAfter": 4,
+          "evenBuildRule": true,
+          "sellBack": {
+            "houseValue": "half_cost",
+            "hotelValue": "half_cost"
+          }
+        },
+        "mortgage": {
+          "allowed": true,
+          "interestRate": 10,
+          "restrictions": {
+            "noBuildings": true
+          }
+        },
+        "bankruptcy": {
+          "toBank": true,
+          "toPlayer": true
+        },
+        "freeParking": {
+          "collectFines": false
+        },
+        "auction": {
+          "unwantedProperties": true,
+          "startingBid": 10,
+          "bidIncrement": 1
+        }
+      },
+      "winConditions": {
+        "lastPlayerStanding": {
+          "description": "The last player with funds or assets wins when all others are bankrupt.",
+          "enabled": true
+        },
+        "timeLimit": {
+          "description": "Game ends after a set time, with the wealthiest player winning.",
+          "enabled": false
+        },
+        "moneyThreshold": {
+          "description": "First player to reach a specific wealth threshold wins.",
+          "enabled": false
+        }
+      },
+      "metadata": {
+        "designGoals": {
+          "playerEngagement": "Encourage strategic planning, negotiation, and economic competition.",
+          "replayability": "Random dice rolls and card draws ensure varied gameplay.",
+          "balance": "Mix of luck and strategy to allow both new and experienced players to compete."
+        },
+        "targetAudience": {
+          "ageRange": "8+",
+          "playerType": ["casual", "strategic", "social"]
+        },
+        "complexity": {
+          "rules": "Moderate",
+          "strategy": "High",
+          "learningCurve": "Medium"
+        }
+      }
+    }
+  }
